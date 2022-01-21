@@ -1,14 +1,21 @@
 class UsersController < ApplicationController
-    #want to be able to create new users (essentially a sign-up functionality)
     
+    def index
+        users = User.all
+        render json: users
+    end
+
+    def show
+        user = User.find(params[:id])
+        #user = User.find(@current_user.id)
+        render json: user
+    end
+
     #sign up
     def create
         user = User.create(user_params)
         render json: user
     end
-
-    #want to be able maybe to see users (thinking about a show action for a user's 
-    #profile page?)
 
     private
         def user_params

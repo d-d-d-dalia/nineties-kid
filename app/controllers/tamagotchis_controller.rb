@@ -1,8 +1,4 @@
 class TamagotchisController < ApplicationController
-    #see all tamagotchis (index)
-    #create a tamagotchi (create)
-    #update a tamagotchi (update)
-    #delete a tamagotchi (destroy)
     #possibly want to also be able to see 1 specific tamagotchi (show)
 
     def index

@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  #stretch goal nested routes?
 
   resources :tamagotchis
   resources :users

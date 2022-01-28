@@ -1,5 +1,6 @@
 class TamagotchisController < ApplicationController
     #possibly want to also be able to see 1 specific tamagotchi (show)
+    skip_before_action :authorize
 
     def index
         tamagotchis = Tamagotchi.all
@@ -29,7 +30,7 @@ class TamagotchisController < ApplicationController
     private
 
         def tamagotchi_params
-            params.permit(:name, :age, :fav_food, :user_id)
+            params.require(:tamagotchi).permit(:name, :age, :fav_food, :user_id)
         end
 
 end

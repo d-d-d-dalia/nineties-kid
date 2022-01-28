@@ -1,24 +1,44 @@
-import logo from './logo.svg';
 import './App.css';
+import { Route, Switch} from 'react-router-dom';
+import TamagotchiForm from './TamagotchiForm';
+import {useState} from "react"
+import Tamagotchis from './Tamagotchis';
+import LoginForm from "./LoginForm"
+
+//stretch
+//password protection
+//deployment
+
+//MVP
+//error handling on the front end
+//update state of tamagotchis after patch
+//debug why editing name changes names of all tamagotchi
 
 function App() {
+  const [user, setUser] = useState(null)
+
+  function handleLogoutClick(){
+    fetch("/logout", {method: "DELETE"}).then(r => {
+      setUser(null)
+    })
+  }
+
+  if (!user) return <LoginForm setUser={setUser}/>
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <main>
+        <Switch>
+          <Route path="/new">
+            <TamagotchiForm/>
+          </Route>
+          <Route path="/">
+            <Tamagotchis user={user}/>
+            <button onClick={handleLogoutClick}>Lougout</button>
+          </Route>
+        </Switch>
+      </main>
+    </>
   );
 }
 

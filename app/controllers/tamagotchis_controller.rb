@@ -1,6 +1,6 @@
 class TamagotchisController < ApplicationController
     #possibly want to also be able to see 1 specific tamagotchi (show)
-    skip_before_action :authorize
+    #skip_before_action :authorize
 
     def index
         tamagotchis = Tamagotchi.all
@@ -13,7 +13,8 @@ class TamagotchisController < ApplicationController
     end
 
     def update
-        tamagotchi = Tamagotchi.update(tamagotchi_params)
+        tamagotchi = Tamagotchi.find(params[:id])
+        tamagotchi.update(tamagotchi_params)
         render json: tamagotchi
     end
 

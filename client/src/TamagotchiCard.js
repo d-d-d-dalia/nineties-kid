@@ -25,7 +25,7 @@ function TamagotchiCard({tamagotchi, removeTamagotchi, user, editTamagotchi}) {
             <br></br>
             <button onClick={e => handleDelete(tamagotchi)}>Delete</button>
             <button onClick={e => handleEditButtonClick()}>{editButton}</button>
-            {editForm ? <EditForm editTamagotchi={editTamagotchi} tamagotchi={tamagotchi} user={user}/> : null}
+            {editForm ? <EditForm handleEditButtonClick={handleEditButtonClick} editTamagotchi={editTamagotchi} tamagotchi={tamagotchi} user={user}/> : null}
         </div>
     )
 }

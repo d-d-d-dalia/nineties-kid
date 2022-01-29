@@ -1,6 +1,6 @@
 import {useState} from "react"
 
-function EditForm({tamagotchi, user, editTamagotchi}){
+function EditForm({tamagotchi, user, editTamagotchi, handleEditButtonClick}){
     const [name, setName] = useState(tamagotchi.name)
     const [age, setAge] = useState(tamagotchi.age)
     const [fav_food, setFavFood] = useState(tamagotchi.fav_food)
@@ -23,7 +23,10 @@ function EditForm({tamagotchi, user, editTamagotchi}){
             }),
         })
           .then(r => r.json())
-          .then(t => editTamagotchi(t))
+          .then(t => {
+              editTamagotchi(t)
+              handleEditButtonClick()
+            })
     }
 
     return (
